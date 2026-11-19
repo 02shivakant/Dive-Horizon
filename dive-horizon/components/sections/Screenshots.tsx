@@ -1,9 +1,9 @@
 "use client";
 
 import { useRef } from "react";
-import Image from "next/image";
 import { gsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
 import SplitLetters from "@/components/ui/SplitLetters";
+import PhoneLandscape from "@/components/ui/PhoneLandscape";
 
 const PANELS = [
   {
@@ -15,19 +15,19 @@ const PANELS = [
   {
     title: "Dive and launch",
     text: "Tap to dive down slopes. Hit a crest to launch into the sunset.",
-    src: "/media/screenshot-gameplay.jpg",
+    src: "/media/screenshot-gameplay.png",
     alt: "Dive Horizon gameplay: the orb gliding down a glowing slope",
   },
   {
     title: "Come back daily",
     text: "Seven days of bonus coins. Day 7 pays out 500.",
-    src: "/media/screenshot-rewards.jpg",
+    src: "/media/screenshot-rewards.png",
     alt: "Dive Horizon daily rewards screen showing a seven day coin streak",
   },
   {
     title: "Climb the ranks",
     text: "Go farther every run and see where you land in the global ranking.",
-    src: "/media/screenshot-rank.jpg",
+    src: "/media/screenshot-rank.png",
     alt: "Dive Horizon global ranking screen with a leaderboard of players",
   },
 ];
@@ -55,7 +55,7 @@ export default function Screenshots() {
           let scrollTween: gsap.core.Tween | undefined;
 
           if (wide) {
-            el.dataset.pinned = "true"; // switches the layout to a horizontal track (see classNames)
+            el.dataset.pinned = "true";
             const dist = () => Math.max(track.scrollWidth - window.innerWidth, 0);
             scrollTween = gsap.to(track, {
               x: () => -dist(),
@@ -100,7 +100,7 @@ export default function Screenshots() {
               .fromTo(
                 frame,
                 { rotateY: dir * 40, x: wide ? dir * 80 : 0, y: wide ? 0 : 40, autoAlpha: 0 },
-                { rotateY: wide ? dir * -6 : 0, x: 0, y: 0, autoAlpha: 1, duration: 1.1, ease: "power3.out" },
+                { rotateY: wide ? dir * -4 : 0, x: 0, y: 0, autoAlpha: 1, duration: 1.1, ease: "power3.out" },
                 0,
               );
           });
@@ -121,11 +121,11 @@ export default function Screenshots() {
       ref={root}
       id="screenshots"
       aria-label="Screenshots"
-      className="group relative overflow-hidden bg-night group-data-[pinned=true]:h-screen data-[pinned=true]:h-screen"
+      className="group relative overflow-hidden bg-night data-[pinned=true]:h-screen"
     >
       <div
         data-track
-        className="flex flex-col group-data-[pinned=true]:w-[400vw] group-data-[pinned=true]:flex-row data-[pinned=true]:w-[400vw]"
+        className="flex flex-col group-data-[pinned=true]:w-[400vw] group-data-[pinned=true]:flex-row"
       >
         {PANELS.map((p, i) => (
           <article
@@ -136,13 +136,16 @@ export default function Screenshots() {
               background: `radial-gradient(ellipse at ${i % 2 ? "30%" : "70%"} 50%, rgba(91,61,245,0.25), transparent 60%)`,
             }}
           >
-            <div className={`max-w-xl text-center md:text-left ${i % 2 ? "md:order-2" : ""}`}>
+            <div className={`max-w-sm text-center md:text-left ${i % 2 ? "md:order-2" : ""}`}>
               <p className="mb-3 font-heading text-sm font-bold tracking-widest text-gold">
                 0{i + 1} / 0{PANELS.length}
               </p>
               <h3 className="font-heading font-extrabold text-cream">
                 <span className="sr-only">{p.title}</span>
-                <span aria-hidden="true" className="block text-[length:clamp(2.25rem,6vw,5rem)] leading-[1.05]">
+                <span
+                  aria-hidden="true"
+                  className="block text-[length:clamp(2rem,9vw,3rem)] leading-[1.05] md:text-[length:clamp(2rem,4vw,4rem)]"
+                >
                   {p.title.split(" ").map((w) => (
                     <span key={w} className="mr-[0.25em] inline-block">
                       <SplitLetters text={w} />
@@ -155,24 +158,13 @@ export default function Screenshots() {
               </p>
             </div>
 
-            <div
-              data-frame
-              className="w-[clamp(170px,min(60vw,40vh),300px)] shrink-0 overflow-hidden rounded-[2.2rem] border-[6px] border-ink bg-ink shadow-glow md:w-[clamp(180px,min(26vw,42vh),320px)]"
-            >
-              <Image
-                src={p.src}
-                alt={p.alt}
-                width={540}
-                height={1170}
-                sizes="(min-width: 768px) 320px, 60vw"
-                className="h-auto w-full rounded-[1.7rem]"
-              />
+            <div data-frame className="w-[92vw] shrink-0 md:w-[min(52vw,100vh)]">
+              <PhoneLandscape src={p.src} alt={p.alt} />
             </div>
           </article>
         ))}
       </div>
 
-      {/* Progress bar (pinned mode only) */}
       <div
         aria-hidden="true"
         className="absolute bottom-8 left-1/2 hidden w-[min(480px,70vw)] -translate-x-1/2 flex-col items-center gap-2 group-data-[pinned=true]:flex"

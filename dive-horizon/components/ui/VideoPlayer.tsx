@@ -30,9 +30,9 @@ const btn =
 type FsVideo = HTMLVideoElement & { webkitEnterFullscreen?: () => void };
 
 export default function VideoPlayer({
-  srcMp4 = "/media/trailer.mp4",
+  srcMp4 = "/media/DiveTrailer.mp4",
   srcWebm = "/media/trailer.webm",
-  poster = "/media/poster.jpg",
+  poster = "/media/poster.png",
   captions = "/media/trailer-captions.vtt",
   onError,
 }: Props) {

@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import Image from "next/image";
+import PhoneLandscape from "@/components/ui/PhoneLandscape";
 import { gsap, useGSAP } from "@/lib/gsap";
 import { onPreloaderDone } from "@/lib/events";
 import { scrollToTarget } from "@/lib/lenis";
@@ -183,13 +183,13 @@ export default function Hero() {
       {/* Content */}
       <div
         data-fade
-        className="relative z-10 mx-auto flex min-h-[100svh] max-w-7xl flex-col items-center justify-center px-6 pb-32 pt-28 text-center lg:items-start lg:text-left"
+        className="relative z-10 mx-auto flex min-h-[100svh] max-w-7xl flex-col items-center justify-center px-6 pb-24 pt-28 text-center lg:items-start lg:pb-32 lg:pt-28 lg:text-left"
       >
         <p
           data-tag
           className="mb-6 inline-flex items-center gap-2 rounded-full border border-cream/20 bg-night/30 px-4 py-1.5 text-sm font-bold backdrop-blur-sm"
         >
-          <span className="h-2 w-2 rounded-full bg-gold" aria-hidden="true" />
+          <span className="h-2 w-2 " aria-hidden="true" />
           Free on Android
         </p>
 
@@ -213,7 +213,7 @@ export default function Hero() {
           Tap to dive. Ride the slopes. Launch off the crests and chase the sunset.
         </p>
 
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-3 lg:justify-start">
+        <div className="relative z-20 mt-8 flex translate-y-10 flex-wrap items-center justify-center gap-3 lg:translate-y-0 lg:justify-start">
           <div data-cta>
             <Button
               href={SITE.playStoreUrl}
@@ -240,24 +240,20 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Floating phone card (desktop) */}
+                {/* Floating phone card (desktop) */}
         <div
           data-phone
-          className="absolute right-[6%] top-[16vh] hidden w-[clamp(180px,min(20vw,30vh),290px)] lg:block"
+          className="absolute right-[-3%] top-[24vh] hidden w-[clamp(300px,min(34vw,95vh),560px)] lg:block"
         >
           <div data-parallax>
             <div data-float>
-              <div className="rotate-6 overflow-hidden rounded-[2.2rem] border-[6px] border-ink bg-ink shadow-glow">
-                <Image
-                  src="/media/screenshot-gameplay.jpg"
-                  alt="Dive Horizon gameplay: the orb gliding down a glowing slope at sunset"
-                  width={540}
-                  height={1170}
-                  sizes="290px"
-                  priority
-                  className="h-auto w-full rounded-[1.7rem]"
-                />
-              </div>
+              <PhoneLandscape
+                src="/media/screenshot-gameplay.jpg"
+                alt="Dive Horizon gameplay: the orb gliding down a glowing slope at sunset"
+                sizes="560px"
+                priority
+                className="-rotate-3"
+              />
             </div>
           </div>
         </div>

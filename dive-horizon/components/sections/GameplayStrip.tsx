@@ -13,7 +13,7 @@ const TILES: Tile[] = [
     className: "md:col-span-7 aspect-video",
     item: {
       kind: "video",
-      src: "/media/clip-1.mp4",
+      src: "/media/Movie_010.mp4",
       webm: "/media/clip-1.webm",
       poster: "/media/clip-1-poster.jpg",
       alt: "Gameplay clip: the orb dives down a slope and launches off a crest",
@@ -22,24 +22,24 @@ const TILES: Tile[] = [
   },
   {
     label: "Screenshot",
-    className: "md:col-span-5 md:mt-24 aspect-[4/5]",
+    className: "md:col-span-5 md:mt-24 aspect-video",
     item: {
       kind: "image",
-      src: "/media/still-1.jpg",
-      poster: "/media/still-1.jpg",
+      src: "/media/still1.png",
+      poster: "/media/still1.png",
       alt: "Dive Horizon still: the orb mid-air above sunset hills",
-      aspect: 4 / 5,
+      aspect: 16 / 9,
     },
   },
   {
     label: "Screenshot",
-    className: "md:col-span-4 md:mt-4 aspect-[4/5]",
+    className: "md:col-span-4 md:mt-4 aspect-video",
     item: {
       kind: "image",
-      src: "/media/still-2.jpg",
-      poster: "/media/still-2.jpg",
+      src: "/media/still2.png",
+      poster: "/media/still2.png",
       alt: "Dive Horizon still: a trail of coins over a night sky",
-      aspect: 4 / 5,
+      aspect: 16 / 9,
     },
   },
   {
@@ -47,7 +47,7 @@ const TILES: Tile[] = [
     className: "md:col-span-8 md:mt-16 aspect-video",
     item: {
       kind: "video",
-      src: "/media/clip-2.mp4",
+      src: "/media/Movie_014.mp4",
       webm: "/media/clip-2.webm",
       poster: "/media/clip-2-poster.jpg",
       alt: "Gameplay clip: a long run collecting coins under the stars",
